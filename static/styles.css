@@ -1,0 +1,96 @@
+/* ===== پایه صفحه ===== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #222;
+  margin: 24px;
+}
+
+/* ===== کل بلوک (تیتر + جدول + دکمه) را وسط صفحه نگه‌می‌دارد ===== */
+.wrap {
+  width: max-content;      /* به اندازه محتوای جدول */
+  margin: 0 auto;          /* وسط صفحه */
+}
+
+/* ===== تیتر بالای جدول، هم‌راستای گوشه چپ جدول ===== */
+h1 {
+  font-size: 22px;
+  margin: 0 0 12px 4px;    /* کمی فاصله از جدول */
+  text-align: left;
+}
+
+/* ===== جدول ===== */
+table {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;     /* جلوگیری از شکست خطوط بلند */
+}
+
+th { font-weight: bold; }
+
+/* ===== ستون Qty (ستون چهارم) ===== */
+th:nth-child(4),
+td:nth-child(4) {
+  width: 88px;             /* می‌تونی 80–96px تنظیم کنی */
+  text-align: center;
+}
+
+/* خانه‌های Qty که سلکت دارند */
+td.qty-cell {
+  text-align: center;
+  padding: 4px 8px;
+}
+
+/* خود سلکت Qty */
+td.qty-cell .dd-qty {
+  display: inline-block;
+  width: 64px;             /* جمع‌وجور؛ درصورت نیاز 56/72 کن */
+  min-width: 64px;
+  max-width: 64px;
+  text-align-last: center;        /* Chrome/Edge */
+  -moz-text-align-last: center;   /* Firefox */
+}
+
+td.qty-cell .dd-qty option { text-align: center; }
+
+/* ===== سلکت‌های عمومی ===== */
+select {
+  padding: 2px 4px;
+  font-size: 14px;
+}
+
+/* ===== دکمه Export (زیر جدول، چپِ جدول) ===== */
+.footer-export {
+  margin-top: 14px;        /* فاصله از جدول */
+}
+
+.export-sticky {
+  position: static;        /* ثابت/چسبان نیست؛ زیر جدول می‌نشیند */
+}
+
+.excel-button, #btn-export {
+  padding: 10px 18px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;   /* هم‌راستا با گوشه چپ جدول */
+}
+
+.excel-button:hover, #btn-export:hover {
+  background-color: #0056b3;
+}
