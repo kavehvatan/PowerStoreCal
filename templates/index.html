@@ -71,6 +71,9 @@
                 </select>
               </td>
 
+            {% elif c == qty_col %}
+              <td class="qty-cell">{{ row[c] }}</td>
+
             {% else %}
               <td>{{ row[c] }}</td>
             {% endif %}
