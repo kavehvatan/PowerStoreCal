@@ -1,29 +1,37 @@
-/* ===== پایه صفحه ===== */
-body {
+/* ========== Base / Layout ========== */
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  background: #f5f6f7;            /* پس‌زمینه طوسی کم‌رنگ */
   font-family: Arial, sans-serif;
-  background-color: #fff;
   color: #222;
-  margin: 24px;
+  text-align: center;             /* جدول وسط */
 }
 
-/* ===== کل بلوک (تیتر + جدول + دکمه) را وسط صفحه نگه‌می‌دارد ===== */
+/* ظرف اصلی ابزار (دیگه سفید نیست) */
 .wrap {
-  width: max-content;      /* به اندازه محتوای جدول */
-  margin: 0 auto;          /* وسط صفحه */
+  display: inline-block;
+  margin: 24px auto 40px;
+  padding: 0;                     /* بدون padding اضافه */
+  background: transparent;        /* حذف کارت سفید */
+  text-align: left;
+  box-sizing: border-box;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-/* ===== تیتر بالای جدول، هم‌راستای گوشه چپ جدول ===== */
+/* ========== Heading ========== */
 h1 {
   font-size: 22px;
-  margin: 0 0 12px 4px;    /* کمی فاصله از جدول */
+  margin: 0 0 12px 4px;
   text-align: left;
 }
 
-/* ===== جدول ===== */
+/* ========== Table ========== */
 table {
   border-collapse: collapse;
   border: 1px solid #ddd;
-  background-color: #fff;
+  background-color: #fff;         /* خود جدول سفید می‌مونه برای خوانایی */
 }
 
 thead { background-color: #f2f2f2; }
@@ -33,21 +41,21 @@ th, td {
   padding: 8px 12px;
   text-align: left;
   vertical-align: middle;
-  white-space: nowrap;     /* جلوگیری از شکست خطوط بلند */
+  white-space: nowrap;
 }
 
 th { font-weight: bold; }
 
-/* ===== ستون اول طوسی مثل هدر ===== */
+/* ستون اول طوسی مثل هدر */
 th:first-child,
 td:first-child {
   background-color: #f2f2f2;
 }
 
-/* ===== ستون Qty (ستون چهارم) ===== */
+/* ستون Qty (ستون چهارم) */
 th:nth-child(4),
 td:nth-child(4) {
-  width: 88px;             /* در صورت نیاز: 80–96px */
+  width: 88px;
   text-align: center;
 }
 
@@ -58,14 +66,17 @@ td.qty-cell {
   position: relative;
 }
 
-/* ===== سلکت‌های عمومی ===== */
+/* ========== Controls ========== */
 select {
   padding: 2px 4px;
   font-size: 14px;
 }
 
-/* ===== دکمه Export (زیر جدول، چپِ جدول) ===== */
-.footer-export { margin-top: 14px; }
+/* ========== Export Button ========== */
+.footer-export {
+  margin-top: 14px;
+  text-align: left;
+}
 
 .export-sticky { position: static; }
 
@@ -77,23 +88,23 @@ select {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-  display: inline-block;   /* هم‌راستا با گوشه چپ جدول */
+  display: inline-block;
 }
 
-.excel-button:hover, #btn-export:hover { background-color: #0056b3; }
+.excel-button:hover, #btn-export:hover {
+  background-color: #0056b3;
+}
 
-/* ---------------------------------------------------
-   QTY — ظاهر مات، کمی کشیده، و برای FIX هم قاب مشابه
-/* Dropdown QTY */
+/* ========== QTY — Dropdown & Fixed ========== */
 td.qty-cell .dd-qty {
   appearance: menulist;
   -webkit-appearance: menulist;
   -moz-appearance: menulist;
 
-  width: 80px;              /* پهن‌تر */
+  width: 80px;
   min-width: 80px;
   max-width: 80px;
-  height: 28px;             /* کوتاه‌تر نسبت به عرض */
+  height: 28px;
   padding: 2px 8px;
 
   background-color: #ededed;
@@ -105,10 +116,9 @@ td.qty-cell .dd-qty {
   -moz-text-align-last: center;
 }
 
-/* FIX QTY */
 td.qty-cell .qty-fixed {
   display: inline-block;
-  min-width: 56px;          /* متناسب با dropdown */
+  min-width: 56px;
   height: 28px;
   line-height: 28px;
   text-align: center;

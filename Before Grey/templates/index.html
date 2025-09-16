@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PowerStore Configurator</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>PowerStore Configurator</h1>
+
+    <table>
+      <thead>
+        <tr>
+          {% for c in columns %}<th>{{ c }}</th>{% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+        <tr>
+          {% for c in columns %}
+
+            {% if c == opt_col and row[mod_col] == 'Dell PowerStore' %}
+              <td>
+                <select class="dd-base">
+                  {% for m in models %}
+                    <option value="{{ m.label }}"
+                            data-sku="{{ m.sku }}"
+                            data-mem-text="{{ m.mem_text }}"
+                            data-mem-sku="{{ m.mem_sku }}"
+                            {% if row[sku_col]==m.sku %}selected{% endif %}>
+                      {{ m.label }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </td>
+
+            {% elif c == opt_col and row[mod_col] == 'Drives' %}
+              <td>
+                <select class="dd-drive">
+                  {% for d in drive_options %}
+                    <option value="{{ d.label }}"
+                            data-sku="{{ d.sku }}"
+                            {% if row[sku_col]==d.sku %}selected{% endif %}>
+                      {{ d.label }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </td>
+
+            {% elif c == opt_col and row[mod_col] == 'Optional SFPs' %}
+              <td>
+                <select class="dd-sfp">
+                  {% for s in sfp_options %}
+                    <option value="{{ s.label }}"
+                            data-sku="{{ s.sku }}"
+                            {% if row[sku_col]==s.sku %}selected{% endif %}>
+                      {{ s.label }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </td>
+
+            {% elif c == qty_col and row[mod_col] == 'Drives' %}
+              <td class="qty-cell">
+                {% set qmax = row.get('QtyMax', 24) %}
+                <select class="dd-qty">
+                  {% for i in range(1, qmax+1) %}
+                    <option value="{{ i }}" {% if i==row[qty_col] %}selected{% endif %}>{{ i }}</option>
+                  {% endfor %}
+                </select>
+              </td>
+
+            {% elif c == qty_col %}
+              <td class="qty-cell">{{ row[c] }}</td>
+
+            {% else %}
+              <td>{{ row[c] }}</td>
+            {% endif %}
+
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="footer-export">
+      <div class="export-sticky">
+        <button id="btn-export" class="excel-button">📥 Export as Excel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
