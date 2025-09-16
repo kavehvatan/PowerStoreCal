@@ -2,18 +2,18 @@
 html, body {
   min-height: 100vh;
   margin: 0;
-  background: #f5f6f7;            /* پس‌زمینه طوسی کم‌رنگ */
+  background: transparent !important;   /* پس‌زمینهٔ میزبان رو نشون بده */
   font-family: Arial, sans-serif;
   color: #222;
-  text-align: center;             /* جدول وسط */
+  text-align: center;                   /* جدول وسط */
 }
 
-/* ظرف اصلی ابزار (دیگه سفید نیست) */
+/* ظرف اصلی ابزار (دیگه هیچ کارت سفید نداره) */
 .wrap {
   display: inline-block;
   margin: 24px auto 40px;
-  padding: 0;                     /* بدون padding اضافه */
-  background: transparent;        /* حذف کارت سفید */
+  padding: 0;
+  background: transparent;              /* شفاف کامل */
   text-align: left;
   box-sizing: border-box;
   border-radius: 0;
@@ -31,7 +31,7 @@ h1 {
 table {
   border-collapse: collapse;
   border: 1px solid #ddd;
-  background-color: #fff;         /* خود جدول سفید می‌مونه برای خوانایی */
+  background: #fff;                     /* خود جدول سفید بمونه برای خوانایی */
 }
 
 thead { background-color: #f2f2f2; }
